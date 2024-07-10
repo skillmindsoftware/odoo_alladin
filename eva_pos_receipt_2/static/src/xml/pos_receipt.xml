@@ -1,0 +1,5 @@
+<xpath expr="." position="inside">
+    <template id="template" xml:space="preserve">
+        <t t-call="eva_pos_receipt.OrderReceipt"/>
+    </template>
+</xpath>
