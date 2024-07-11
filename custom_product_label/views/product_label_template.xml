@@ -1,0 +1,15 @@
+<odoo>
+    <template id="custom_product_label" inherit_id="product.report_simple_label2x7">
+        <xpath expr="//div[@class='o_label_extra_data']" position="before">
+            
+            <div class="text-center">
+                <span>DISCOUNTED PRICE: KES </span>
+                <strong t-field="product.discounted_price" t-options="{'widget': 'monetary', 'label_price': True}"/>
+            </div>
+            <div class="text-center">
+                <span>BEFORE DISCOUNT: KES </span>
+                <span t-field="product.list_price" t-options="{'widget': 'monetary', 'label_price': True}"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
