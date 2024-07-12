@@ -6,11 +6,21 @@
         <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='default_code']" position="after">
-                <field name="supplier_code"/>
-                <field name="mm_yr"/>
+
+                <field name="vendor_sku"/>
                 <field name="sku"/>
-                <field name="custom_description"/>
             </xpath>
         </field>
     </record>
+
+    <!-- <record id="view_partner_form_custom" model="ir.ui.view">
+        <field name="name">res.partner.form.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="vendor_sku" attrs="{'invisible': [('supplier_rank', '=', 0)]}"/>
+            </xpath>
+        </field>
+    </record> -->
 </odoo>
