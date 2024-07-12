@@ -1,14 +1,24 @@
 <odoo>
     <template id="custom_product_label" inherit_id="product.report_simple_label2x7">
-        <xpath expr="//div[@class='o_label_extra_data']" position="before">
-            
-            <div class="text-center">
-                <span>DISCOUNTED PRICE: KES </span>
-                <strong t-field="product.discounted_price" t-options="{'widget': 'monetary', 'label_price': True}"/>
-            </div>
-            <div class="text-center">
-                <span>BEFORE DISCOUNT: KES </span>
-                <span t-field="product.list_price" t-options="{'widget': 'monetary', 'label_price': True}"/>
+        <xpath expr="//div[hasclass('o_label_extra_data')]" position="replace">
+            <div class="o_label_extra_data" style="font-family: Arial, sans-serif; padding: 5px; border: 1px solid black; width: 100%; height: 100%;">
+                <div style="font-weight: bold; font-size: 12px; margin-bottom: 5px;">
+                    ALLADIN WORLD OF BRANDS
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', product.barcode, 600, 100)" style="width: 100%; max-height: 30px;"/>
+                </div>
+                <div style="font-weight: bold; font-size: 11px; margin-bottom: 5px;">
+                    <span t-field="product.name"/>
+                </div>
+                <div style="font-size: 10px; margin-bottom: 3px;">
+                    <span>DISCOUNTED PRICE: KES </span>
+                    <strong t-field="product.discounted_price" t-options="{'widget': 'monetary', 'display_currency': False}"/>/-
+                </div>
+                <div style="font-size: 10px;">
+                    <span>BEFORE DISCOUNT: KES </span>
+                    <span t-field="product.list_price" t-options="{'widget': 'monetary', 'display_currency': False}"/>/-
+                </div>
             </div>
         </xpath>
     </template>
