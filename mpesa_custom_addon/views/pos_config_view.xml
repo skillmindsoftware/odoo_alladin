@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_mpesa" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.mpesa</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='payment_methods_config']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box" id="mpesa_config">
+                    <div class="o_setting_left_pane">
+                        <field name="mpesa_enabled"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="mpesa_enabled"/>
+                        <div class="text-muted">
+                            Enable M-Pesa payments in this POS
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
