@@ -18,7 +18,7 @@ patch(PaymentScreen.prototype, {
         this.receipt_state = useState({ total_quantity: 0 });
     },
     async validateOrder(isForceValidate) {
-        console.log("Validate order button clicked!");
+        // console.log("Validate order button clicked!");
         // const total_quantity = this.itemCount();
         // console.log("Total Quantity:", total_quantity);
         // Store total quantity in the state
@@ -52,36 +52,36 @@ patch(OrderReceipt.prototype, {
 
         this.ui = useState(useService("ui"));
         this.totalQuantity = 0;
-        console.log(this.props);
+        // console.log(this.props);
 
         const orderlines = this.props.data.orderlines;
-        console.log(orderlines, "OL");
+        // console.log(orderlines, "OL");
 
         // let totalQuantity = 0;
         orderlines.forEach((line) => {
             this.totalQuantity += line.qty;
         });
-        console.log(this.totalQuantity, "QTY");
+        // console.log(this.totalQuantity, "QTY");
 
         return this.totalQuantity
 
         // this.totalQuantity.setValue(totalQuantity);
 
-    //     onMounted(async () => {
-    //         console.log(this.props);
+        //     onMounted(async () => {
+        //         console.log(this.props);
 
-    //         const orderlines = this.props.data.orderlines;
-    //         console.log(orderlines, "OL");
+        //         const orderlines = this.props.data.orderlines;
+        //         console.log(orderlines, "OL");
 
-    //         let totalQuantity = 0;
-    //         orderlines.forEach((line) => {
-    //             totalQuantity += line.qty;
-    //         });
-    //         console.log(totalQuantity, "QTY");
+        //         let totalQuantity = 0;
+        //         orderlines.forEach((line) => {
+        //             totalQuantity += line.qty;
+        //         });
+        //         console.log(totalQuantity, "QTY");
 
-    //         this.totalQuantity.setValue(totalQuantity);
-    //     }
-    // );
+        //         this.totalQuantity.setValue(totalQuantity);
+        //     }
+        // );
     },
 });
 
