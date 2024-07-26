@@ -15,14 +15,11 @@
         # "views/assets.xml",
     ],
     "installable": True,
-    'assets': {
-        'web.assets.backend': ['eva_pos_receipt/static/src/**/*'],
-        'point_of_sale._assets_pos': [
-            'eva_pos_receipt/static/src/js/pos_receipt_total_qty.js',
-            'eva_pos_receipt/static/src/xml/pos_receipt_total_qty.xml',
-            'eva_pos_receipt/static/src/xml/pos_header.xml',
-            # 'eva_pos_receipt/static/src/pos_receipts.css',
+    "assets": {
+        "web.assets.backend": ["eva_pos_receipt/static/src/**/*"],
+        "point_of_sale._assets_pos": [
+            "eva_pos_receipt/static/src//static/**/*",
         ],
     },
-    'images': ['static/description/banner.png'],
+    "images": ["static/description/banner.png"],
 }
