@@ -15,3 +15,7 @@
     "auto_install": False,
     "license": "LGPL-3",
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> temp_branch
