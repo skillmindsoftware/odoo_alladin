@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_inherit_fetch_data" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.fetch.data</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_id']" position="after">
+                <button name="action_fetch_stock_data" string="Fetch PO Data" type="object" class="oe_inline oe_link" invisible="state != 'draft'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
