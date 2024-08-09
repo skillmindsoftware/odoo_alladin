@@ -24,6 +24,26 @@ class PosOrderInherit(models.Model):
 class PosOrderLineInherit(models.Model):
     _inherit = "pos.order.line"
 
+    config_id = fields.Many2one(
+        "pos.config",
+        string="Point of Sale",
+        related="order_id.session_id.config_id",
+        store=True,
+        readonly=False,
+    )
+
+    discount_amount = fields.Float(
+        string="field_name",
+        compute="_compute_discount_amount",
+        store=True,
+        readonly=True,
+    )
+
+    @api.depends("price_unit", "discount")
+    def _compute_discount_amount(self):
+        for line in self:
+            line.discount_amount = (line.price_unit * line.discount) / 100
+
     @api.depends("price_unit", "tax_ids", "qty", "discount", "product_id")
     def _compute_amount_line_all(self):
         super(PosOrderLineInherit, self)._compute_amount_line_all()
