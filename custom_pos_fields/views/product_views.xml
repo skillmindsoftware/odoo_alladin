@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="product_template_form_view_inherit_discount" model="ir.ui.view">
-        <field name="name">product.template.form.inherit.discount</field>
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_form_view"/>
-        <field name="arch" type="xml">
-            <xpath expr="//div[@name='standard_price_uom']" position="after">
-                <label for="discount_rate"/>
-                <div class="o_row">
-                    <field name="discount_rate"/>
-                    <span>%</span>
-                </div>
-            </xpath>
-        </field>
-    </record>
-
-    <record id="product_normal_form_view_inherit_discount" model="ir.ui.view">
-        <field name="name">product.product.form.inherit.discount</field>
+    <record id="product_normal_form_view_inherit_custom" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.custom</field>
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='standard_price_uom']" position="after">
-                <label for="discount_rate"/>
+            <!-- Remove existing fields -->
+            <xpath expr="//field[@name='list_price']" position="replace"/>
+            <xpath expr="//field[@name='taxes_id']" position="replace"/>
+            <xpath expr="//field[@name='standard_price']" position="replace"/>
+            <!-- <xpath expr="//field[@name='discount_rate']" position="replace"/> -->
+
+            <!-- Add cost-related fields at the top -->
+            <xpath expr="//group[@name='group_standard_price']" position="inside">
+                <field name="list_price" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                <field name="taxes_id" widget="many2many_tags" options="{'no_create': True}" context="{'default_type_tax_use': 'sale'}"/>
+                <field name="standard_price" widget="monetary" options="{'currency_field': 'cost_currency_id'}"/>
+                <field name="discount_rate" string="Discount Rate"/>
+                <hr/>
+                <hr/>
+                <hr/>
+
+                <!-- <label for="discount_rate"/>
                 <div class="o_row">
                     <field name="discount_rate"/>
                     <span>%</span>
-                </div>
+
+                </div> -->
+            </xpath>
+
+            <!-- Add separator -->
+            <xpath expr="//group[@name='group_standard_price']" position="after">
+                <hr/>
+                <hr/>
+                <hr/>
+            </xpath>
+
+            <!-- Move other fields below -->
+            <xpath expr="//group[@name='group_standard_price']" position="after">
+                <group name="other_fields">
+                    <!-- Add other fields here -->
+                    <field name="type"/>
+                    <field name="categ_id"/>
+                    <field name="default_code"/>
+                    <field name="barcode"/>
+                    <!-- Add more fields as needed -->
+                </group>
             </xpath>
         </field>
     </record>
