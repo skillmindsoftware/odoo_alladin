@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Update Product Product Form View -->
+    <record id="product_normal_form_view_inherited" model="ir.ui.view">
+        <field name="name">product.product.form.inherited</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_standard_price']" position="replace">
+                <group name="group_standard_price">
+                    <label for="standard_price" groups="base.group_user"/>
+                    <div name="standard_price_uom" groups="base.group_user" class="o_row">
+                        <field name="standard_price" widget="monetary" options="{'currency_field': 'cost_currency_id'}"/>
+                        <field name="cost_tax_string" class="oe_inline"/>
+                    </div>
+                    <field name="supplier_taxes_id" widget="many2many_tags" options="{'no_create': True}" context="{'default_type_tax_use':'purchase'}"/>
+                    <label for="lst_price" groups="base.group_user"/>
+                    <div name="pricing" groups="base.group_user" class="o_row">
+                        <field name="lst_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        <field name="tax_string" class="oe_inline"/>
+                    </div>
+                    <field name="taxes_id" widget="many2many_tags" options="{'no_create': True}" context="{'default_type_tax_use':'sale'}"/>
+                    <label for="discount_rate" groups="base.group_user"/>
+                    <div name="discount" groups="base.group_user" class="o_row">
+                        <field name="discount_rate"/>
+                        <span>%</span>
+                    </div>
+                    <field name="sales_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="default_code"/>
+                    <field name="barcode"/>
+                    <field name="categ_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Create Product Template Form View -->
+    <record id="product_template_form_view_inherited" model="ir.ui.view">
+        <field name="name">product.template.form.inherited</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_standard_price']" position="replace">
+                <group name="group_standard_price">
+                    <label for="standard_price" groups="base.group_user"/>
+                    <div name="standard_price_uom" groups="base.group_user" class="o_row">
+                        <field name="standard_price" widget="monetary" options="{'currency_field': 'cost_currency_id'}"/>
+                        <field name="cost_tax_string" class="oe_inline"/>
+                    </div>
+                    <field name="supplier_taxes_id" widget="many2many_tags" options="{'no_create': True}" context="{'default_type_tax_use':'purchase'}"/>
+                    <label for="list_price" groups="base.group_user"/>
+                    <div name="pricing" groups="base.group_user" class="o_row">
+                        <field name="list_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        <field name="tax_string" class="oe_inline"/>
+                    </div>
+                    <field name="taxes_id" widget="many2many_tags" options="{'no_create': True}" context="{'default_type_tax_use':'sale'}"/>
+                    <label for="discount_rate" groups="base.group_user"/>
+                    <div name="discount" groups="base.group_user" class="o_row">
+                        <field name="discount_rate"/>
+                        <span>%</span>
+                    </div>
+                    <field name="sales_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="default_code"/>
+                    <field name="barcode"/>
+                    <field name="categ_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
